@@ -1,6 +1,8 @@
 package org.example.oblig3v2finale;
 
+// Ticket class representing a movie ticket with relevant information
 public class Ticket {
+    // Fields representing ticket attributes
     private int id;
     private String movie;
     private String total;
@@ -9,8 +11,10 @@ public class Ticket {
     private String telefonnr;
     private String email;
 
+    // Default constructor
     public Ticket(){ }
 
+    // Parameterized constructor
     public Ticket(int id, String movie, String total, String firstname, String lastname, String telefonnr, String email) {
         this.id = id;
         this.movie = movie;
@@ -21,6 +25,7 @@ public class Ticket {
         this.email = email;
     }
 
+    // Getter and setter methods for ticket attributes
     public int getId() {
         return id;
     }
