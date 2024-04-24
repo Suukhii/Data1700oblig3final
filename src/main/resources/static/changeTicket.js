@@ -1,5 +1,5 @@
 $(function(){
-    const id = window.location.search.substring(1); // Get ID from URL parameter
+    const id = window.location.search.substring(1); 
     const url = "/getOneTicket?" + id; // Set up URL to fetch a ticket based on id
     $.get(url, function(ticket){ // Send GET request to the server to fetch ticket data
         $("#id").val(ticket.id);
@@ -22,7 +22,7 @@ function changeTicket(){
     const telefonnr = $("#telefonnr").val();
     const email = $("#email").val();
 
-    // Check if all validation functions return 'false', indicating that at least one of the input values is invalid
+    
     // Prevents the ticket from being changed if at least one of the input fields contains an invalid value
     if(!changeValidationMovie(movie) | !changeValidationTotal(total) | !changeValidationFirstname(firstname) | !changeValidationLastname(lastname) | !changeValidationTelefonnr(telefonnr) | !changeValidationEmail(email)){
         return;
