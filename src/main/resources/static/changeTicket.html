@@ -1,21 +1,27 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!-- Set title of the page -->
     <title>Changing of ticket</title>
+    <!-- Include jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- Include custom JavaScript file -->
     <script src="changeTicket.js"></script>
 </head>
 
 <body class="container">
 
+<!-- Heading -->
 <h1 class="mt-5 mb-4">Changing of cinema ticket</h1>
 
+<!-- Form for changing ticket -->
 <form class="form">
 
+    <!-- Hidden input for ticket ID -->
     <input type="hidden" id="id"/>
 
+    <!-- Select menu for choosing movie -->
     <label for="choose">Choose a movie:</label>
     <select class="" name="movie" id="choose">
         <option value="">Choose a movie:</option>
@@ -24,38 +30,47 @@
         <option value="Star Wars">Star Wars</option>
         <option value="Castle in the sky">Castle in the sky</option>
     </select>
+    <!-- Validation message for movie selection -->
     <label id="changevalidationmovie" style="color: red"></label>
 
     <br><br>
+    <!-- Input field for total tickets -->
     <label for="total">Total tickets</label>
-    <input type="number" id="total"/> <!-- setter krav om at det skal være minimum 1 billetter eller maks 99 billetter -->
-    <label id="changevalidationtotal" style="color: red"></label> <!-- bruker fargen red her for å vise rød tekst, siden vi ikke skal benytte css fil -->
+    <input type="number" id="total"/> <!-- requires at least 1 ticket and maximum 99 tickets -->
+    <!-- Validation message for total tickets -->
+    <label id="changevalidationtotal" style="color: red"></label> <!-- using red color for text since no CSS file is used -->
     <br><br>
 
+    <!-- Table for user information -->
     <table>
         <tr>
             <td>Firstname</td>
             <td><label for="firstname"></label><input type="text" id="firstname"/></td>
+            <!-- Validation message for firstname -->
             <td id="changevalidationfirstname" style="color: red"></td>
         </tr>
         <tr>
             <td>Lastname</td>
             <td><label for="lastname"></label><input type="text" id="lastname"/></td>
+            <!-- Validation message for lastname -->
             <td id="changevalidationlastname" style="color: red"></td>
         </tr>
         <tr>
             <td>Telefonnr</td>
             <td><label for="telefonnr"></label><input type="text" id="telefonnr"/></td>
+            <!-- Validation message for telefonnr -->
             <td id="changevalidationtelefonnr" style="color: red"></td>
         </tr>
         <tr>
             <td>Email</td>
             <td><label for="email"></label><input type="text" id="email"/></td>
+            <!-- Validation message for email -->
             <td id="changevalidationemail" style="color: red"></td>
         </tr>
     </table>
     <br>
 
+    <!-- Button for changing ticket -->
     <button type="button" class="btn btn-primary" onclick="changeTicket()">Endre</button>
 
 </form>
