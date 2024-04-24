@@ -1,98 +1,96 @@
-
-//Funksjon for å validere valgt film
+// Function to validate movie selection
 function checkValidationMovie(movie){
     if(!movie){
-        $("#validatemovie").text("Må velge en film"); //Viser feilmelding hvis det ikke ble valgt en film (dette er ikke nødvendig å ha med i forhold til oppgaven, men kan være greit å gjøre brukeren obs på at det ikke ble valgt en film)
+        $("#validatemovie").text("Choose a movie"); // Display error message if no movie is selected
         return false;
     } else {
-        $("#validatemovie").text(""); //Hvis det ble valgt en film, vil evt. tidligere feilmeldinger fjernes
+        $("#validatemovie").text(""); // Clear previous error messages if a movie is selected
     }
     return true;
 }
 
-//Funksjon for validering av antall billetter
+// Function to validate total ticket input
 function checkValidationTotal(total){
     if(!total){
-        $("#validatetotal").text("Må skrive inn noe i antall"); //Viser beskjed om å skrive inn tall hvis det ikke ble skrevet inn noe tall
+        $("#validatetotal").text("Enter total tickets"); // Display message to enter total tickets if no input is provided
         return false;
     }
     else if(isNaN(total)){
-        $("#validatetotal").text("Ugyldig verdi - Vennligst skriv inn antall billetter"); //Viser feilmesling hvis det ble skrevet inn noe annet enn tall
+        $("#validatetotal").text("Invalid value - Please enter a number"); // Display error message if input is not a number
         return false;
     }
     else if(!/^[1-9][0-9]?$|^99$/.test(total)){
-        $("#validatetotal").text("Vennligst velg antall billetter mellom 1 og 99"); //Viser feilmelding hvis det ble skrevet inn et antall mindre enn 1 eller større enn 99
+        $("#validatetotal").text("Please select tickets between 1 and 99"); // Display error message if input is not between 1 and 99
         return false;
     } else {
-        $("#validatetotal").text(""); //Fjerner tidligere feilmeldinger hvis skrevet inn verdi er gydlig
+        $("#validatetotal").text(""); // Clear previous error messages if input is valid
     }
     return true;
 }
 
-//Funksjon for validering av fornavn
+// Function to validate firstname input
 function checkValidationFirstname(firstname){
     if(!firstname){
-        $("#validatefirstname").text("Må skrive inn noe inn i fornavnet"); //Gir beskjed om å skrive inn fornavn hvis det ikke ble skrevet inn noe i input feltet
+        $("#validatefirstname").text("Enter your firstname"); // Display message to enter firstname if no input is provided
         return false;
     }
-    else if(/[^a-æøåA-ÆØÅ]/.test(firstname)){ //Tester om fornavn inneholder noe annet enn bokstavene a-z og A-Z
-        $("#validatefirstname").text("Ugyldig verdi - Vennligst skriv inn fornavn"); //Viser feilmelding hvis fornavn inneholder andre symboler, selv om det er bokstaver i fornavnet
+    else if(/[^a-æøåA-ÆØÅ]/.test(firstname)){ // Test if firstname contains characters other than letters
+        $("#validatefirstname").text("Invalid value - Please enter your firstname"); // Display error message if firstname contains invalid characters
         return false;
     } else {
-        $("#validatefirstname").text("") //Fjerner tidligere feilmeldinger hvis skrevet inn verdi er gydlig
+        $("#validatefirstname").text(""); // Clear previous error messages if input is valid
     }
     return true;
 }
 
-//Funksjon for validering av etternavn
+// Function to validate lastname input
 function checkValidationLastname(lastname){
     if(!lastname){
-        $("#validatelastname").text("Må skrive inn noe inn i etternavnet"); //Gir beskjed om å skrive inn etternavn hvis det ikke ble skrevet inn noe i input feltet
+        $("#validatelastname").text("Enter your lastname"); // Display message to enter lastname if no input is provided
         return false;
     }
-    else if(/[^a-æøåA-ÆØÅ]/.test(lastname)){ //Tester om fornavn inneholder noe annet enn bokstavene a-z og A-Z
-        $("#validatelastname").text("Ugyldig verdi - Vennligst skriv inn etternavn"); //Viser feilmelding hvis etternavn inneholder andre symboler, selv om det er bokstaver i etternavnet
+    else if(/[^a-æøåA-ÆØÅ]/.test(lastname)){ // Test if lastname contains characters other than letters
+        $("#validatelastname").text("Invalid value - Please enter your lastname"); // Display error message if lastname contains invalid characters
         return false;
     } else {
-        $("#validatelastname").text(""); //Fjerner tidligere feilmeldinger hvis skrevet inn verdi er gydlig
+        $("#validatelastname").text(""); // Clear previous error messages if input is valid
     }
     return true;
 }
 
-//Funksjon for validering av telefonnummer
+// Function to validate phone number input
 function checkValidationTelefonnr(telefonnr){
     if(!telefonnr){
-        $("#validatetelefonnr").text("Må skrive inn noe inn i telefonnr");
+        $("#validatetelefonnr").text("Enter your phone number"); // Display message to enter phone number if no input is provided
         return false;
     }
-    else if(!/^\d{8}$/.test(telefonnr)) { //Viser feilmelding hvis telefonnummer inneholder andre symboler enn tall og om nummeret ikke består av 8 siffere
-        $("#validatetelefonnr").text("Ugyldig verdi - Telefonnummer må bestå av 8 siffer");
+    else if(!/^\d{8}$/.test(telefonnr)) { // Test if phone number contains exactly 8 digits
+        $("#validatetelefonnr").text("Invalid value - Phone number must be 8 digits"); // Display error message if phone number is invalid
         return false;
     } else {
-        $("#validatetelefonnr").text("");
+        $("#validatetelefonnr").text(""); // Clear previous error messages if input is valid
     }
     return true;
 }
 
-//Funksjon for validering av epostadresse
+// Function to validate email input
 function checkValidationEmail(email){
     if(!email){
-        $("#validateemail").text("Må skrive inn noe inn i epost");
+        $("#validateemail").text("Enter your email"); // Display message to enter email if no input is provided
         return false;
     }
-    else if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ //Bruker dette mønsteret til å sjekke om epostadresse er gyldid ved å følge formatet der brukernavn er først, så @, domenenavn og toppnivådomene
-        $("#validateemail").text("Ugyldig verdi - Vennligst skriv inn epost"); //Viser feilmelding hvsi epostadresse ikke er gyldig
+    else if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ // Test if email follows the standard format
+        $("#validateemail").text("Invalid value - Please enter a valid email"); // Display error message if email is invalid
         return false;
     } else {
-        $("#validateemail").text("");
+        $("#validateemail").text(""); // Clear previous error messages if input is valid
     }
     return true;
 }
 
-
-//funksjon for å vise billettregister
+// Function to display ticket registration form
 function TicketRegistration(){
-
+    // Retrieve input values
     const movie = $("#choose").val();
     const total = $("#total").val();
     const firstname = $("#firstname").val();
@@ -100,12 +98,12 @@ function TicketRegistration(){
     const telefonnr = $("#telefonnr").val();
     const email = $("#email").val();
 
-
-
+    // Validate input values
     if(!checkValidationMovie(movie) | !checkValidationTotal(total) | !checkValidationFirstname(firstname) | !checkValidationLastname(lastname) | !checkValidationTelefonnr(telefonnr) | !checkValidationEmail(email)){
         return;
     }
 
+    // Create new ticket object
     const newTicket = {
         movie : movie,
         total : total,
@@ -115,14 +113,16 @@ function TicketRegistration(){
         email : email
     };
 
+    // Send post request to save ticket
     $.post("/save", newTicket, function (){
         getAll();
     });
 
+    // Clear form after submission
     clearForm();
 }
 
-
+// Function to clear input form
 function clearForm(){
     $("#choose").val("");
     $("#total").val("");
@@ -132,13 +132,14 @@ function clearForm(){
     $("#email").val("");
 }
 
+// Function to get all tickets and display them
 function getAll(){
     $.get("/getAll", function (data){
         showTicketTabell(data);
     });
 }
 
-
+// Function to display all tickets in a table
 function showTicketTabell(tickets){
     let out = "<table class='table table-striped' style='text-align: center'><tr>" +
         "<th><strong>Movie</strong></th>" +
@@ -159,8 +160,8 @@ function showTicketTabell(tickets){
             "<td>"+newTicket.lastname+"</td>" +
             "<td>"+newTicket.telefonnr+"</td>" +
             "<td>"+newTicket.email+"</td>" +
-            "<td><a class='btn btn-primary' href='changeTicket.html?id="+newTicket.id+"'>Endre</a></td>" +
-            "<td><button type='button' class='btn btn-danger' onclick='deleteOneTicket("+newTicket.id+")'>Slett</button></td>";
+            "<td><a class='btn btn-primary' href='changeTicket.html?id="+newTicket.id+"'>Change</a></td>" +
+            "<td><button type='button' class='btn btn-danger' onclick='deleteOneTicket("+newTicket.id+")'>Delete</button></td>";
         out+="</tr>";
     }
     out+="</table>";
@@ -168,9 +169,7 @@ function showTicketTabell(tickets){
     $("#ticketregistration").html(out);
 }
 
-
-
-
+// Function to initialize ticket display on page load
 $(function() {
     $.get("/getAll", function (data) {
         if (data.length > 0) {
@@ -179,18 +178,18 @@ $(function() {
     });
 });
 
-
+// Function to delete a single ticket
 function deleteOneTicket(id){
     const url = "/deleteOneTicket?id="+id;
     $.get(url, function (){
-        //window.location.href = "/";
         getAll();
     });
 }
 
+// Function to delete all tickets
 function deleteAllTickets(){
     $.get("/deleteAll", function (){
         showTicketTabell([]);
-        console.log("Tabell slettet");
+        console.log("Table cleared");
     });
 }
