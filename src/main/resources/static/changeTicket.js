@@ -1,8 +1,7 @@
-
 $(function(){
-    const id = window.location.search.substring(1); //Henter ID fra URL-parameteren
-    const url = "/getOneTicket?"+id; //Setter opp URL-en for å hente en billett basert på id
-    $.get(url,function(ticket){ //Sender GET-forespørsel til serveren for å hente billettdata fra serveren
+    const id = window.location.search.substring(1); // Get ID from URL parameter
+    const url = "/getOneTicket?" + id; // Set up URL to fetch a ticket based on id
+    $.get(url, function(ticket){ // Send GET request to the server to fetch ticket data
         $("#id").val(ticket.id);
         $("#choose").val(ticket.movie);
         $("#total").val(ticket.total);
@@ -14,7 +13,7 @@ $(function(){
 });
 
 function changeTicket(){
-    console.log("Endre billett knapp klikket"); //Sjekker om at billettknapp funksjonen fungerer
+    console.log("Change ticket button clicked"); // Check if the change ticket button function is working
 
     const movie = $("#choose").val();
     const total = $("#total").val();
@@ -23,9 +22,8 @@ function changeTicket(){
     const telefonnr = $("#telefonnr").val();
     const email = $("#email").val();
 
-
-    //Sjekker om alle valideringsfunksjonene returnerer 'false', som indikerer at minst en av inputverdiene ikke er gyldig
-    //Hindrer at billetten blir endret dersom minst en av inputfeltene inneholder ugyldig verdi
+    // Check if all validation functions return 'false', indicating that at least one of the input values is invalid
+    // Prevents the ticket from being changed if at least one of the input fields contains an invalid value
     if(!changeValidationMovie(movie) | !changeValidationTotal(total) | !changeValidationFirstname(firstname) | !changeValidationLastname(lastname) | !changeValidationTelefonnr(telefonnr) | !changeValidationEmail(email)){
         return;
     }
@@ -39,97 +37,97 @@ function changeTicket(){
         telefonnr : telefonnr,
         email : email
     }
-    $.post("/changeOneTicket",ticket,function (){
+    $.post("/changeOneTicket", ticket, function (){
         window.location.href = 'index.html';
     });
 }
 
-//Funksjon for å validere valgt endret film
+// Function to validate selected movie for change
 function changeValidationMovie(movie){
     if(!movie){
-        $("#changevalidationmovie").text("Må velge en film"); //Viser feilmelding hvis det ikke ble valgt en film (dette er ikke nødvendig å ha med i forhold til oppgaven, men kan være greit å gjøre brukeren obs på at det ikke ble valgt en film)
+        $("#changevalidationmovie").text("Must choose a movie"); // Show error message if no movie is selected
         return false;
     } else {
-        $("#changevalidationmovie").text(""); //Hvis det ble valgt en film, vil evt. tidligere feilmeldinger fjernes
+        $("#changevalidationmovie").text(""); // If a movie is selected, remove any previous error messages
     }
     return true;
 }
 
-//Funksjon for validering av endring av antall billetter
+// Function to validate changing total tickets
 function changeValidationTotal(total){
     if(!total){
-        $("#changevalidationtotal").text("Må skrive inn noe i antall"); //Viser beskjed om å skrive inn tall hvis det ikke ble skrevet inn noe tall
+        $("#changevalidationtotal").text("Must enter a value for total tickets"); // Show message to enter a value if no value is entered
         return false;
     }
     else if(isNaN(total)){
-        $("#changevalidationtotal").text("Ugyldig verdi - Vennligst skriv inn antall billetter"); //Viser feilmesling hvis det ble skrevet inn noe annet enn tall
+        $("#changevalidationtotal").text("Invalid value - Please enter total tickets"); // Show error message if a value other than a number is entered
         return false;
     }
     else if(!/^[1-9][0-9]?$|^99$/.test(total)){
-        $("#changevalidationtotal").text("Vennligst velg antall billetter mellom 1 og 99"); //Viser feilmelding hvis det ble skrevet inn et antall mindre enn 1 eller større enn 99
+        $("#changevalidationtotal").text("Please select total tickets between 1 and 99"); // Show error message if a value less than 1 or greater than 99 is entered
         return false;
     } else {
-        $("#changevalidationtotal").text(""); //Fjerner tidligere feilmeldinger hvis skrevet inn verdi er gydlig
+        $("#changevalidationtotal").text(""); // Remove any previous error messages if entered value is valid
     }
     return true;
 }
 
-//Funksjon for validering av endret fornavn
+// Function to validate changing firstname
 function changeValidationFirstname(firstname){
     if(!firstname){
-        $("#changevalidationfirstname").text("Må skrive inn noe inn i fornavnet"); //Gir beskjed om å skrive inn fornavn hvis det ikke ble skrevet inn noe i input feltet
+        $("#changevalidationfirstname").text("Must enter a value for firstname"); // Show message to enter firstname if no value is entered
         return false;
     }
-    else if(/[^a-æøåA-ÆØÅ]/.test(firstname)){ //Tester om fornavn inneholder noe annet enn bokstavene a-z og A-Z
-        $("#changevalidationfirstname").text("Ugyldig verdi - Vennligst skriv inn fornavn"); //Viser feilmelding hvis fornavn inneholder andre symboler, selv om det er bokstaver i fornavnet
+    else if(/[^a-zA-Z]/.test(firstname)){ // Check if firstname contains any characters other than a-z and A-Z
+        $("#changevalidationfirstname").text("Invalid value - Please enter firstname"); // Show error message if firstname contains other characters even if they are letters
         return false;
     } else {
-        $("#changevalidationfirstname").text("") //Fjerner tidligere feilmeldinger hvis skrevet inn verdi er gydlig
+        $("#changevalidationfirstname").text("") // Remove any previous error messages if entered value is valid
     }
     return true;
 }
 
-//Funksjon for validering av endret etternavn
+// Function to validate changing lastname
 function changeValidationLastname(lastname){
     if(!lastname){
-        $("#changevalidationlastname").text("Må skrive inn noe inn i etternavnet"); //Gir beskjed om å skrive inn etternavn hvis det ikke ble skrevet inn noe i input feltet
+        $("#changevalidationlastname").text("Must enter a value for lastname"); // Show message to enter lastname if no value is entered
         return false;
     }
-    else if(/[^a-æøåA-ÆØÅ]/.test(lastname)){ //Tester om fornavn inneholder noe annet enn bokstavene a-z og A-Z
-        $("#changevalidationlastname").text("Ugyldig verdi - Vennligst skriv inn etternavn"); //Viser feilmelding hvis etternavn inneholder andre symboler, selv om det er bokstaver i etternavnet
+    else if(/[^a-zA-Z]/.test(lastname)){ // Check if lastname contains any characters other than a-z and A-Z
+        $("#changevalidationlastname").text("Invalid value - Please enter lastname"); // Show error message if lastname contains other characters even if they are letters
         return false;
     } else {
-        $("#changevalidationlastname").text(""); //Fjerner tidligere feilmeldinger hvis skrevet inn verdi er gydlig
+        $("#changevalidationlastname").text(""); // Remove any previous error messages if entered value is valid
     }
     return true;
 }
 
-//Funksjon for validering av endret telefonnummer
+// Function to validate changing phone number
 function changeValidationTelefonnr(telefonnr){
     if(!telefonnr){
-        $("#changevalidationtelefonnr").text("Må skrive inn noe inn i telefonnr");
+        $("#changevalidationtelefonnr").text("Must enter a value for phone number"); // Show message to enter phone number if no value is entered
         return false;
     }
-    else if(!/^\d{8}$/.test(telefonnr)) { //Viser feilmelding hvis telefonnummer inneholder andre symboler enn tall og om nummeret ikke består av 8 siffere
-        $("#changevalidationtelefonnr").text("Ugyldig verdi - Telefonnummer må bestå av 8 siffer");
+    else if(!/^\d{8}$/.test(telefonnr)) { // Show error message if phone number contains characters other than numbers and if the number does not consist of 8 digits
+        $("#changevalidationtelefonnr").text("Invalid value - Phone number must consist of 8 digits");
         return false;
     } else {
-        $("#changevalidationtelefonnr").text("");
+        $("#changevalidationtelefonnr").text(""); // Remove any previous error messages if entered value is valid
     }
     return true;
 }
 
-//Funksjon for validering av endret epostadresse
+// Function to validate changing email
 function changeValidationEmail(email){
     if(!email){
-        $("#changevalidationemail").text("Må skrive inn noe inn i epost");
+        $("#changevalidationemail").text("Must enter a value for email"); // Show message to enter email if no value is entered
         return false;
     }
-    else if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ //Bruker dette mønsteret til å sjekke om epostadresse er gyldid ved å følge formatet der brukernavn er først, så @, domenenavn og toppnivådomene
-        $("#changevalidationemail").text("Ugyldig verdi - Vennligst skriv inn epost"); //Viser feilmelding hvsi epostadresse ikke er gyldig
+    else if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ // Use this pattern to check if email address is valid by following the format where username comes first, then @, domain name, and top level domain
+        $("#changevalidationemail").text("Invalid value - Please enter email"); // Show error message if email address is not valid
         return false;
     } else {
-        $("#changevalidationemail").text("");
+        $("#changevalidationemail").text(""); // Remove any previous error messages if entered value is valid
     }
     return true;
 }
