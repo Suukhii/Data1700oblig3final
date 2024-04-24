@@ -20,47 +20,46 @@
         <option value="Interstellar ">Interstellar</option>
         <option value="Star Wars">Star Wars</option>
         <option value="Castle in the sky">Castle in the sky</option>
-
     </select>
-    <label id="validatemovie"></label>
+    <label id="validatemovie"></label> <!-- Validation message for movie selection -->
 
     <br><br>
     <label for="total">Total Tickets</label>
     <input type="number" id="total"/>
-    <label id="validatetotal" ></label>
+    <label id="validatetotal" ></label> <!-- Validation message for total tickets -->
     <br><br>
 
     <table>
         <tr>
             <td>Firstname</td>
             <td><input type="text" id="firstname"/></td>
-            <td id="validatefirstname"></td>
+            <td id="validatefirstname"></td> <!-- Validation message for firstname -->
         </tr>
         <tr>
             <td>Lastname</td>
             <td><input type="text" id="lastname"/></td>
-            <td id="validatelastname" ></td>
+            <td id="validatelastname" ></td> <!-- Validation message for lastname -->
         </tr>
         <tr>
             <td>Telefonnr</td>
             <td><input type="text" id="telefonnr"/></td>
-            <td id="validatetelefonnr" ></td>
+            <td id="validatetelefonnr" ></td> <!-- Validation message for phone number -->
         </tr>
         <tr>
             <td>Email</td>
             <td><input type="text" id="email"/></td>
-            <td id="validateemail"></td>
+            <td id="validateemail"></td> <!-- Validation message for email -->
         </tr>
     </table>
     <br>
 
-    <button type="button" onclick="TicketRegistration()">Buy Ticket</button>
+    <button type="button" onclick="TicketRegistration()">Buy Ticket</button> <!-- Button to register ticket -->
 
     <h2 class="mt-5 mb-4">All Tickets</h2>
 
-    <div id="ticketregistration"></div>
+    <div id="ticketregistration"></div> <!-- Div to display all registered tickets -->
 
-    <button type="button" onclick="deleteAllTickets()">Delete all tickets</button>
+    <button type="button" onclick="deleteAllTickets()">Delete all tickets</button> <!-- Button to delete all tickets -->
 
 </form>
 
