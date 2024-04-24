@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ordering a movie ticket</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="index.js"></script>
+</head>
+
+<body class="container">
+
+<h1 class="mt-5 mb-4">Ordering a movie ticket</h1>
+
+<form class="form">
+
+    <label for="choose">Choose a movie:</label>
+    <select class="" name="movie" id="choose">
+        <option value="">Choose a movie:</option>
+        <option value="Inception ">Inception</option>
+        <option value="Interstellar ">Interstellar</option>
+        <option value="Star Wars">Star Wars</option>
+        <option value="Castle in the sky">Castle in the sky</option>
+
+    </select>
+    <label id="validatemovie"></label>
+
+    <br><br>
+    <label for="total">Total Tickets</label>
+    <input type="number" id="total"/>
+    <label id="validatetotal" ></label>
+    <br><br>
+
+    <table>
+        <tr>
+            <td>Firstname</td>
+            <td><input type="text" id="firstname"/></td>
+            <td id="validatefirstname"></td>
+        </tr>
+        <tr>
+            <td>Lastname</td>
+            <td><input type="text" id="lastname"/></td>
+            <td id="validatelastname" ></td>
+        </tr>
+        <tr>
+            <td>Telefonnr</td>
+            <td><input type="text" id="telefonnr"/></td>
+            <td id="validatetelefonnr" ></td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td><input type="text" id="email"/></td>
+            <td id="validateemail"></td>
+        </tr>
+    </table>
+    <br>
+
+    <button type="button" onclick="TicketRegistration()">Buy Ticket</button>
+
+    <h2 class="mt-5 mb-4">All Tickets</h2>
+
+    <div id="ticketregistration"></div>
+
+    <button type="button" onclick="deleteAllTickets()">Delete all tickets</button>
+
+</form>
+
+</body>
+</html>
